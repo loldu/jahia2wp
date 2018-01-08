@@ -16,7 +16,7 @@ services:
       environment:
       - PMA_ARBITRARY=1
       ports:
-      - ${WP_PORT_PHPMA}:80
+      - 127.0.0.1:${WP_PORT_PHPMA}:80
       volumes:
       - /sessions
       restart: always
@@ -33,9 +33,6 @@ services:
       - db:db
     environment:
       - WP_ENV=${WP_ENV}
-    ports:
-      - "${WP_PORT_HTTP}:8080"
-      - "${WP_PORT_HTTPS}:8443"
     restart: always
 
   mgmt:
@@ -59,6 +56,4 @@ services:
       - ./functional_tests:/srv/${WP_ENV}/jahia2wp/functional_tests
       - ./Makefile.mgmt:/srv/${WP_ENV}/jahia2wp/Makefile
       - .env:/srv/${WP_ENV}/jahia2wp/.env
-    ports:
-      - "${WP_PORT_SSHD}:22"
     restart: always
