@@ -186,7 +186,18 @@ function epfl_memento_process_shortcode(
         $color
     );
     $events = EventUtils::get_items($url);
-    return MementoRender::epfl_memento_build_html($events, $template);
+
+    if (has_action("epfl_event_action")) {
+        ob_start();
+        try {
+            do_action("epfl_event_action", $events);
+            return ob_get_contents();
+        } finally {
+            ob_end_clean();
+        }
+    } else {
+       return MementoRender::epfl_memento_build_html($events, $template);
+    }
 }
 
 // Load .mo file for translation
