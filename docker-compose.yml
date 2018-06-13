@@ -8,7 +8,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./volumes/db:/var/lib/mysql
-      - ./etc/mysql/utf8.cnf:/etc/mysql/conf.d/utf8.cnf:ro
+      - ./mysql.conf.d:/etc/mysql/conf.d:ro
     restart: always
 
   phpmyadmin:
