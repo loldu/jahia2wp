@@ -21,3 +21,5 @@ src/*.zip
 ansible/*.json
 ansible/**/*.retry
 deploy.retry
+src/ventilation/*.csv
+src/ventilation/hosts/
