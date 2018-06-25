@@ -1,4 +1,5 @@
-# Ensure that WordPress
+# Ensure that WordPress is in a known good state, restoring it
+# from backup (or ex nihilo) if appropriate
 
 - set_fact:
     play_wp_delete: '{{inventory_hostname in wp_destructive and wp_destructive[inventory_hostname] == "wipe"}}'
