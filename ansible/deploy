@@ -10,10 +10,12 @@
 #
 # ./ansible/deploy -l charte-wp-dcsl
 #
+# ./ansible/deploy -l charte-wp-dcsl -e '{"wp_destructive":{"vpsi":"wipe"},"wp_unit_id":"VPSI"}'
 #
 # If you are unfamiliar with Ansible, read up on it at
 # - https://www.ansible.com/overview/how-ansible-works
 # - https://github.com/jdauphant/awesome-ansible
 
 
+export ANSIBLE_CONFIG="$PWD"/ansible/ansible.cfg
 ansible-playbook -e "play_create_or_restore=true" -i ansible/hosts-dev "$@" ansible/playbooks/wordpress-main.yml

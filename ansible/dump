@@ -15,4 +15,5 @@
 # - https://www.ansible.com/overview/how-ansible-works
 # - https://github.com/jdauphant/awesome-ansible
 
+export ANSIBLE_CONFIG="$PWD"/ansible/ansible.cfg
 ansible-playbook -e "play_dump=true" -e "dump_local_dir={{ to }}" -i ansible/hosts-dev "$@" ansible/playbooks/wordpress-main.yml

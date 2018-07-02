@@ -30,6 +30,7 @@
       # is the one that fails
       rm -rf wp-content wp-includes wp-admin
       {{ backup_prod_shell_untar }} --exclude wp-config.php
+  ignore_errors: true  # XXX Fix this
 
 - name: Restore data only (uploads) from tar backups
   when: wp_destructive[inventory_hostname] == "data-only"
